@@ -1,382 +1,773 @@
-
 <!DOCTYPE html>
-<html lang='en' class=''>
+<html lang="en">
 <head>
-<meta charset='UTF-8'>
-<title>Anshuman </title>
-<meta name="robots" content="noindex">
-<meta name="viewport" content="width=device-width, initial-scale = 1, maximum-scale=3.0, minimum-scale=1">
-<link rel="shortcut icon" href="images/anshu.jpg"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"style="border-radius:50%">
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script type="text/javascript" src="js/protectode.js"></script>
-<link rel="stylesheet" href="css/normalize.css">
-<link rel ="stylesheet" href="css/nav.css">
-<link rel="stylesheet" href="css/main.css">
-<link rel="stylesheet" href="css/contactus.css">
-<link rel="stylesheet" href="css/resume.css">
-<script src="js/vendor/modernizr-2.6.2.min.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-storage.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-database.js"></script>
-<script src="init-firebase.js"></script>
+  <meta charset="UTF-8" />
+  <title>Anshuman Badal | Full Stack Engineer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3.0, minimum-scale=1" />
+  <link rel="shortcut icon" href="images/anshu.jpg" />
+
+  <!-- Reset & Base Styles -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
+
+  <!-- Custom Styles (your existing files) -->
+  <link rel="stylesheet" href="css/normalize.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/contactus.css" />
+  <link rel="stylesheet" href="css/resume.css" />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/protectode.js"></script>
+  <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-database.js"></script>
+  <script src="init-firebase.js"></script>
+
+  <!-- Optional: Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+      line-height: 1.6;
+    }
+
+    a {
+      color: #38bdf8;
+    }
+
+    a:hover {
+      text-decoration: none;
+      color: #0ea5e9;
+    }
+
+    /* Navbar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 32px;
+      background: rgba(15, 23, 42, 0.9);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    nav .logo h4 {
+      color: #f9fafb;
+      margin: 0;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+    }
+
+    .nav-links li a {
+      color: #cbd5f5;
+      font-size: 0.95rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .nav-links li a:hover {
+      color: #ffffff;
+    }
+
+    .burger {
+      display: none;
+      cursor: pointer;
+    }
+
+    .burger div {
+      width: 25px;
+      height: 3px;
+      background-color: #e5e7eb;
+      margin: 5px;
+      transition: all 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        right: 0;
+        top: 64px;
+        height: calc(100vh - 64px);
+        background: #020617;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 2rem;
+        width: 60%;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in;
+      }
+
+      .nav-links.nav-active {
+        transform: translateX(0%);
+      }
+
+      .burger {
+        display: block;
+      }
+    }
+
+    /* Hero / Profile */
+    .hero {
+      padding: 80px 16px 40px;
+      background: radial-gradient(circle at top, #1d293b, #020617);
+    }
+
+    .hero .container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+
+    .hero-left {
+      max-width: 520px;
+    }
+
+    .hero-title {
+      font-size: 2.4rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: #9ca3af;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .badge-pill {
+      border-radius: 999px;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.75rem;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: #e5e7eb;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .btn-primary-custom {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      border: none;
+      color: #f9fafb;
+      padding: 0.6rem 1.4rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .btn-outline-custom {
+      border-radius: 999px;
+      border: 1px solid #64748b;
+      padding: 0.6rem 1.4rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      background: transparent;
+      color: #e5e7eb;
+      cursor: pointer;
+    }
+
+    .hero-right {
+      text-align: center;
+    }
+
+    .profile-image-wrapper {
+      border-radius: 999px;
+      padding: 4px;
+      background: conic-gradient(from 180deg, #22c55e, #06b6d4, #6366f1, #22c55e);
+      display: inline-block;
+    }
+
+    .profile-image-wrapper img {
+      width: 180px;
+      height: 180px;
+      border-radius: 999px;
+      object-fit: cover;
+      border: 4px solid #020617;
+    }
+
+    .hero-location {
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+      color: #9ca3af;
+    }
+
+    /* Generic Section */
+    section {
+      padding: 40px 16px;
+    }
+
+    section .section-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: #e5e7eb;
+    }
+
+    /* About */
+    .about-text {
+      max-width: 720px;
+      color: #e5e7eb;
+    }
+
+    /* Experience */
+    .timeline-item {
+      border-left: 2px solid #1f2937;
+      padding-left: 1rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: #22c55e;
+      position: absolute;
+      left: -6px;
+      top: 4px;
+    }
+
+    .timeline-role {
+      font-weight: 600;
+    }
+
+    .timeline-company {
+      font-size: 0.95rem;
+      color: #9ca3af;
+    }
+
+    .timeline-meta {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-list {
+      font-size: 0.9rem;
+      color: #d1d5db;
+      padding-left: 1rem;
+    }
+
+    /* Projects */
+    .project-item {
+      margin-bottom: 1.5rem;
+    }
+
+    .project-title {
+      font-weight: 600;
+    }
+
+    .project-meta {
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 0.75rem;
+      max-width: 720px;
+    }
+
+    .skill-chip {
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.75rem;
+      background: #020617;
+      border: 1px solid #1e293b;
+      font-size: 0.85rem;
+      color: #e5e7eb;
+    }
+
+    /* Contact / Footer */
+    .contact-info-list {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 1rem;
+    }
+
+    .contact-info-list li {
+      margin-bottom: 0.25rem;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      padding: 16px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #6b7280;
+      border-top: 1px solid #111827;
+      margin-top: 24px;
+    }
+
+    /* Popup Contact Form */
+    .form-popup-bg {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+    }
+
+    .form-popup-bg.is-visible {
+      display: flex;
+    }
+
+    .form-container {
+      background: #020617;
+      padding: 24px;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 480px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      border: 1px solid #1f2937;
+    }
+
+    .form-container h1 {
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+    }
+
+    .form-container p {
+      font-size: 0.9rem;
+      color: #9ca3af;
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      font-size: 0.85rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .close-button {
+      border: none;
+      background: transparent;
+      color: #9ca3af;
+      float: right;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .close-button:hover {
+      color: #f9fafb;
+    }
+
+    input[type="submit"] {
+      margin-top: 1rem;
+      border-radius: 999px;
+      background: #22c55e;
+      border: none;
+      padding: 0.5rem 1.2rem;
+      color: #020617;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background: #16a34a;
+    }
+  </style>
 </head>
 <body>
   <div id="demo-content">
+    <!-- Navbar -->
+    <nav>
+      <div class="logo">
+        <h4>Anshuman Badal</h4>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#top">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#" id="btnOpenForm">Contact</a></li>
+      </ul>
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </nav>
 
-		<div id="loader-wrapper">
-			<div id="loader"></div>
+    <!-- Hero / Profile -->
+    <header id="top" class="hero">
+      <div class="container">
+        <div class="hero-left">
+          <h1 class="hero-title">Hi, I'm Anshuman 👋</h1>
+          <p class="hero-subtitle">
+            Full Stack Engineer specializing in Java, Spring Boot, React, GraphQL and AWS Cloud.
+          </p>
+          <div class="hero-badges">
+            <span class="badge-pill">Full Stack Engineering</span>
+            <span class="badge-pill">Production Support</span>
+            <span class="badge-pill">AWS & Cloud</span>
+            <span class="badge-pill">Incident / Change / Problem Management</span>
+          </div>
+          <p>
+            I build and support large-scale, production-grade applications with a focus on reliability,
+            performance, and clean architecture. I enjoy debugging complex issues, designing scalable
+            backend systems, and working with modern cloud-native stacks.
+          </p>
+          <div class="hero-cta">
+            <a href="mailto:apcbadal@gmail.com">
+              <button class="btn-primary-custom">Email Me</button>
+            </a>
+            <a href="https://www.linkedin.com/in/apcbadal" target="_blank">
+              <button class="btn-outline-custom">View LinkedIn</button>
+            </a>
+          </div>
+        </div>
 
-			<div class="loader-section section-left"></div>
-            <div class="loader-section section-right"></div>
+        <div class="hero-right">
+          <div class="profile-image-wrapper">
+            <img src="images/anshu.jpg" alt="Anshuman profile" />
+          </div>
+          <div class="hero-location">
+            Gurugram / Noida, India · <a href="tel:+917091177725">+91 7091177725</a>
+          </div>
+        </div>
+      </div>
+    </header>
 
-		</div>
+    <!-- About -->
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">About</h2>
+        <p class="about-text">
+          I am a results-driven Software Engineer with strong expertise in Java, Spring Boot, React, PostgreSQL,
+          NoSQL and AWS Cloud. I specialize in managing and supporting large-scale production applications
+          where stability, performance, and quick incident resolution are critical.
+        </p>
+        <p class="about-text">
+          My experience includes end-to-end ownership of production systems across Incident, Change and Problem
+          Management, proactive dependency upgrades, and deep collaboration with stakeholders. I work extensively
+          with modern cloud architectures using AWS CDK, Amplify, CloudFormation, AppSync, GraphQL and DynamoDB
+          to deliver scalable, secure and resilient solutions.
+        </p>
+      </div>
+    </section>
 
+    <!-- Experience -->
+    <section id="experience">
+      <div class="container">
+        <h2 class="section-title">Experience</h2>
 
-<nav>
-  <div class="logo">
-  <h4>Anshuman Badal</h4>
-  </div>
-  <ul class="nav-links">
-  <li><a href="#">Home</a></li>
-  <li><a href=#about>About</a></li>
-  <li><a href=#projects>Projects</a></li>
-  <li><a href="" id="btnOpenForm">Contact</a></li>
-  <li><a href="login.html">Login</a></li>
-  </ul>
-  <div class="burger">
-  <div class="line1"></div>
-  <div class="line2"></div>
-  <div class="line3"></div>
-  </div>
-  </nav>
-<div class="resume-wrapper">
-<section class="profile section-padding">
-<div class="container">
-  
-<div class="picture-resume-wrapper">
-<div class="picture-resume">
-<span><img src="images/anshu.jpg" alt="" /></span>
-<svg version="1.1" viewBox="0 0 350 350">
-<defs>
-<filter id="goo">
-<feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
-<feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 21 -9" result="cm" />
-</filter>
-</defs>
-<g filter="url(#goo)">
-<circle id="main_circle" class="st0" cx="171.5" cy="175.6" r="130" />
-<circle id="circle" class="bubble0 st1" cx="171.5" cy="175.6" r="122.7" />
-<circle id="circle" class="bubble1 st1" cx="171.5" cy="175.6" r="122.7" />
-<circle id="circle" class="bubble2 st1" cx="171.5" cy="175.6" r="122.7" />
-<circle id="circle" class="bubble3 st1" cx="171.5" cy="175.6" r="122.7" />
-<circle id="circle" class="bubble4 st1" cx="171.5" cy="175.6" r="122.7" />
-<circle id="circle" class="bubble5 st1" cx="171.5" cy="175.6" r="122.7" />
-<circle id="circle" class="bubble6 st1" cx="171.5" cy="175.6" r="122.7" />
-<circle id="circle" class="bubble7 st1" cx="171.5" cy="175.6" r="122.7" />
-<circle id="circle" class="bubble8 st1" cx="171.5" cy="175.6" r="122.7" />
-<circle id="circle" class="bubble9 st1" cx="171.5" cy="175.6" r="122.7" />
-<circle id="circle" class="bubble10 st1" cx="171.5" cy="175.6" r="122.7" />
-</g>
-</svg>
-</div>
-<div class="clearfix"></div>
-</div>
-<div class="name-wrapper"id="about">
-<h1>Anshuman Pd <br />Choudhary Badal</h1>
-</div>
-<div class="clearfix"></div>
-<div class="contact-info clearfix">
-<ul class="list-titles">
-<li>Call</li></br></br>
-<li>Mail</li></br>
+        <div class="timeline-item">
+          <div class="timeline-role">Application Development Senior Analyst</div>
+          <div class="timeline-company">Accenture</div>
+          <div class="timeline-meta">September 2024 – Present · Gurugram, India</div>
+          <ul class="timeline-list">
+            <li>Managing and supporting large-scale production applications with high availability.</li>
+            <li>Leading Incident, Change and Problem Management with detailed RCA and long-term fixes.</li>
+            <li>Executing deployments on complex AWS architectures using CDK, CloudFormation, AppSync, GraphQL, DynamoDB.</li>
+            <li>Collaborating daily with stakeholders on incidents, analysis and development updates.</li>
+          </ul>
+        </div>
 
-<li>Home</li>
-</ul>
-<ul class="list-content ">
-<li><a href="tel:+917091177725">+91 7091177725</li> 
-  <li><a href="tel:+91797900308">+91 7979003038</li> 
-<li><a href="mailto:apcbadal@gmail.com" class="__cf_email__" data-cfemail="650415060704010409250208040c094b060a08">apcbadal@gmail.com</a></li> 
+        <div class="timeline-item">
+          <div class="timeline-role">Senior Software Developer</div>
+          <div class="timeline-company">Velocis Systems Pvt. Ltd.</div>
+          <div class="timeline-meta">January 2024 – September 2024 · New Delhi, India</div>
+          <ul class="timeline-list">
+            <li>Worked with NIC (Govt. of India) on Smart Public Distribution System projects.</li>
+            <li>Designed and developed APIs for One Nation One Ration Card Scheme.</li>
+            <li>Handled a large PostgreSQL database (~40 TB) for efficient data access.</li>
+            <li>Set up GitLab and CI/CD pipelines to streamline deployments.</li>
+          </ul>
+        </div>
 
-<li>Lalpur</br>Bhairoganj,Chandan<br />Banka-813106</br>Bihar</li> 
-</ul>
-</div>
-<div class="contact-presentation"> 
-<p>Self-motivated and hardworking graduate seeking an opportunity to
-work in a challenging environment to prove my coding skills and utilize
-my knowledge of various databases for the growth of the organization.</p>
-</div>
-<div class="contact-social clearfix">
-<ul class="list-titles">
-<li>Twitter</li>
-<li>Github</li>
-</ul>
-<ul class="list-content"> 
-<li><a href="https://twitter.com/anshumanbadal"target="_blank">Anshuman Badal</a></li> 
-<li><a href="https://github.com/apcbadal"target="_blank">Anshuman Badal</a></li> 
-</ul>
-</div>
-</div>
-</section>
-<section class="experience section-padding">
-<div class="container">
-<h3 class="experience-title">Education</h3>
-<div class="experience-wrapper">
-<div class="company-wrapper clearfix">
-<div class="experience-title">Katihar Engineering College, Katihar</div> 
-</div>
-<div class="job-wrapper clearfix">
-<div class="experience-title">B.tech (Computer Sc. & Engineering) </div> 
-<div class="company-description">
-Sep 2016 - Present<p>CGPA : 7.4</p> 
-</div>
-</div>
-<div class="company-wrapper clearfix">
-<div class="experience-title">+2 Project Girls High School Bhairoganj</div> 
+        <div class="timeline-item">
+          <div class="timeline-role">Software Engineer</div>
+          <div class="timeline-company">Blue Berry e-Services Pvt. Ltd.</div>
+          <div class="timeline-meta">October 2021 – January 2024 · Noida, India</div>
+          <ul class="timeline-list">
+            <li>Integrated Truecaller authentication, reducing verification cost by ~80%.</li>
+            <li>Implemented 1-tap instant verification, removing OTP SMS and reducing drop-offs.</li>
+            <li>Built CI/CD pipelines using GitHub Actions, Docker and Azure (40% faster releases).</li>
+            <li>Improved performance with Redis and JPA (up to 50% faster load times).</li>
+            <li>Developed features using React Native for Android and iOS.</li>
+          </ul>
+        </div>
 
-</div>
-<div class="job-wrapper clearfix">
-<div class="experience-title">XII, BSEB Patna</div> 
-<div class="company-description">
-<p>Year - 2016</br> Percentage - 54</p> 
-</div>
-</div>
-<div class="company-wrapper clearfix">
-<div class="experience-title">+2 Project Girls High School Bhairoganj</div> 
-</div>
-<div class="job-wrapper clearfix">
-<div class="experience-title">X, BSEB Patna </div> 
-<div class="company-description">
-<p>Year - 2014<br /> Percentage - 70</p> 
-</div>
-</div>
-</div>
-<div class="container">
-<h3 class="experience-title"id="projects">Projects</h3>
-<div class="experience-wrapper">
-<div class="company-wrapper clearfix">
-<div class="experience-title"style="font-weight:500">Online Attendance App</div> 
-</div>
-<div class="job-wrapper clearfix">
-<div class="experience-title">Worked on developing Online Attendance App using React native
-and Google Firebase. This app minimizes the paperwork for the
-attendance of students and converges the whole attendance system
-into a Mobile app-based environment
-</div> 
-<div class="company-description">
-25 Dec 19 - 15 Feb 20 
-</div>
-</div>
-<div class="company-wrapper clearfix">
-<div class="experience-title"style="font-weight:500">Website for College With Inventory Management System
-</div> 
+        <div class="timeline-item">
+          <div class="timeline-role">Software Engineer Intern</div>
+          <div class="timeline-company">Blue Berry e-Services Pvt. Ltd.</div>
+          <div class="timeline-meta">July 2021 – September 2021 · Noida, India</div>
+          <ul class="timeline-list">
+            <li>Built Authentication UI, Profile screens and navigation using React Native.</li>
+            <li>Integrated in-app update support and enhanced overall app UX.</li>
+          </ul>
+        </div>
 
-</div>
-<div class="job-wrapper clearfix">
-<div class="experience-title">Worked as an active member of the college's Web Team for
-developing College's website which used HTML, CSS, JavaScript in
-front end and Java, Mysql at the back-end.</div> 
-<div class="company-description">
-<p>15 Nov 19 - 3 Jan 20</br> </p> <br />Visit :<a href="http://keck.ac.in"target="_blank"> Katihar Engineering College, Katihar </a>
-</div>
-</div>
-</div>
-<div class="section-wrapper clearfix">
-<h3 class="section-title">Skills</h3> 
-<ul>
-<li class="skill-percentage">HTML / HTML5</li>
-<li class="skill-percentage">CSS</li>
-<li class="skill-percentage">Bootstrap</li>
-<li class="skill-percentage">Javascript</li>
-<li class="skill-percentage">Java</li>
-<li class="skill-percentage">
-Spring Boot
-</li>
-<li class="skill-percentage">React Native</li>
-<li class="skill-percentage">
-MySQL, Google Firebase
-</li>
-</ul>
-</div>
-<div class="section-wrapper clearfix">
-<h3 class="section-title">Tools</h3> 
-<p>Github, Putty, WinSCP</p>
-</div>
-<div class="section-wrapper clearfix">
-<h3 class="section-title">Operating System</h3> 
-<p>Windows, Linux</p>
-</div>
-<div class="section-wrapper clearfix">
-<h3 class="section-title">Hobbies</h3> 
-<p>Playing Carrom</p></br>
-</div>
-<div class="section-wrapper clearfix">
-<h3 class="section-title">Achievements</h3> 
-<p>Won the Ethical Hacking
-Competition at GCE, Gaya.</p>
-</div>
-</div>
-</section>
-<div class="clearfix"></div>
-</div>
-<div class="form-popup-bg">
-  <div class="form-container">
-  <button id="btnCloseForm" class="close-button">X</button>
-  <h1>Contact Us</h1>
-  <p>For more information. Please complete this form.</p>
-  <form>
-  <div class="form-group">
-  <label for="">Name</label>
-  <input type="text" class="form-control"id="contactName" />
-  </div>
-  <div class="form-group">
-  <label for="">E-Mail Address</label>
-  <input class="form-control" type="text" id="contactEmail"/>
-  </div>
-  <div class="form-group">
-  <label for="">Phone Number</label>
-  <input class="form-control" type="text"id="contactPhone" />
-  </div>
-  <div class="form-group">
-    <label for="">Your Query</label>
-    <textarea class="form-control" type="textarea"id="contactQuery" ></textarea>
+        <div class="timeline-item">
+          <div class="timeline-role">Frontend Developer Intern</div>
+          <div class="timeline-company">Prolincur Technologies</div>
+          <div class="timeline-meta">June 2021 – June 2021</div>
+          <ul class="timeline-list">
+            <li>Worked on React and React-Three.js to build interactive frontend components.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education & Projects -->
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title">Education</h2>
+        <div class="timeline-item">
+          <div class="timeline-role">B.Tech, Computer Science & Engineering</div>
+          <div class="timeline-company">Katihar Engineering College, Katihar</div>
+          <div class="timeline-meta">September 2016 – December 2020 · CGPA: 7.4</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-role">XII (BSEB Patna)</div>
+          <div class="timeline-company">+2 Project Girls High School, Bhairoganj</div>
+          <div class="timeline-meta">Year: 2016 · Percentage: 54%</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-role">X (BSEB Patna)</div>
+          <div class="timeline-company">+2 Project Girls High School, Bhairoganj</div>
+          <div class="timeline-meta">Year: 2014 · Percentage: 70%</div>
+        </div>
+
+        <h2 class="section-title" style="margin-top: 2rem;">Projects</h2>
+
+        <div class="project-item">
+          <div class="project-title">Online Attendance App</div>
+          <div class="project-meta">React Native · Firebase · 25 Dec 2019 – 15 Feb 2020</div>
+          <p>
+            Built an Online Attendance App using React Native and Firebase that minimized paperwork for student
+            attendance and digitized the entire process into a mobile app environment.
+          </p>
+        </div>
+
+        <div class="project-item">
+          <div class="project-title">College Website with Inventory Management System</div>
+          <div class="project-meta">HTML, CSS, JavaScript, Java, MySQL · 15 Nov 2019 – 3 Jan 2020</div>
+          <p>
+            Contributed as part of the web team to develop the college website with an integrated inventory management system.
+            The system used HTML/CSS/JS on the frontend and Java + MySQL on the backend.
+            <br />
+            Visit:
+            <a href="http://keck.ac.in" target="_blank" rel="noopener noreferrer">
+              Katihar Engineering College, Katihar
+            </a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title">Skills & Tools</h2>
+        <div class="skills-grid">
+          <div class="skill-chip">Java</div>
+          <div class="skill-chip">Spring Boot</div>
+          <div class="skill-chip">REST APIs</div>
+          <div class="skill-chip">React</div>
+          <div class="skill-chip">React Native</div>
+          <div class="skill-chip">JavaScript</div>
+          <div class="skill-chip">PostgreSQL</div>
+          <div class="skill-chip">MySQL</div>
+          <div class="skill-chip">NoSQL / DynamoDB</div>
+          <div class="skill-chip">AWS CDK</div>
+          <div class="skill-chip">AWS Amplify</div>
+          <div class="skill-chip">AWS CloudFormation</div>
+          <div class="skill-chip">AWS AppSync</div>
+          <div class="skill-chip">GraphQL</div>
+          <div class="skill-chip">Git / GitHub / GitLab</div>
+          <div class="skill-chip">CI/CD · Jenkins, GitHub Actions</div>
+          <div class="skill-chip">Docker</div>
+          <div class="skill-chip">Windows / Linux</div>
+        </div>
+
+        <div class="section-wrapper clearfix" style="margin-top: 1.5rem;">
+          <h3 class="section-title" style="font-size: 1.1rem;">Achievements</h3>
+          <p>Won the Ethical Hacking Competition at GCE, Gaya.</p>
+        </div>
+
+        <div class="section-wrapper clearfix" style="margin-top: 1rem;">
+          <h3 class="section-title" style="font-size: 1.1rem;">Hobbies</h3>
+          <p>Playing Carrom.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Popup -->
+    <div class="form-popup-bg">
+      <div class="form-container">
+        <button id="btnCloseForm" class="close-button">✕</button>
+        <h1>Contact Me</h1>
+        <p>Want to discuss an opportunity, project or collaboration? Drop a message.</p>
+        <form>
+          <div class="form-group">
+            <label for="contactName">Name</label>
+            <input type="text" class="form-control" id="contactName" />
+          </div>
+          <div class="form-group">
+            <label for="contactEmail">E-Mail Address</label>
+            <input class="form-control" type="email" id="contactEmail" />
+          </div>
+          <div class="form-group">
+            <label for="contactPhone">Phone Number</label>
+            <input class="form-control" type="text" id="contactPhone" />
+          </div>
+          <div class="form-group">
+            <label for="contactQuery">Your Message</label>
+            <textarea class="form-control" id="contactQuery"></textarea>
+          </div>
+          <input type="submit" value="Submit" onclick="checkCondition()" />
+        </form>
+      </div>
     </div>
-  <input type="submit" onclick="checkCondition()"></input>
-  </form>
+
+    <footer>
+      © <span id="year"></span> Anshuman Badal · Built with ❤️ using JavaScript & Firebase ·
+      <a href="https://github.com/apcbadal" target="_blank">GitHub</a> ·
+      <a href="https://twitter.com/anshumanbadal" target="_blank">Twitter</a> ·
+      <a href="https://www.linkedin.com/in/apcbadal" target="_blank">LinkedIn</a>
+    </footer>
   </div>
-  </div>
+
+  <!-- Scripts -->
   <script>
-function checkCondition(){
-  event.preventDefault();
-  if(document.getElementById("contactName").value!=0){
-    if(document.getElementById("contactEmail").value!=0){
-      if(document.getElementById("contactPhone").value!=0){
-        if(document.getElementById("contactQuery").value!=0){
-          contact();
-        }
-        else{
-          alert("Query can't be blank !")
-        }
-      }else{
-        alert("Phone number can't be blank !")
-      }
-    }else{
-      alert("Email can't be blank !")
+    // Set current year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Mobile nav
+    const navSlide = () => {
+      const burger = document.querySelector(".burger");
+      const nav = document.querySelector(".nav-links");
+      const navLinks = document.querySelectorAll(".nav-links li");
+
+      burger.addEventListener("click", () => {
+        nav.classList.toggle("nav-active");
+
+        navLinks.forEach((link, index) => {
+          if (link.style.animation) {
+            link.style.animation = "";
+          } else {
+            link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.5}s`;
+          }
+        });
+
+        burger.classList.toggle("toggle");
+      });
+    };
+
+    navSlide();
+
+    function closeForm() {
+      $(".form-popup-bg").removeClass("is-visible");
     }
-  }else{
-    alert("Name can't be blank !")
-  }
-}
-    function contact(){
-    event.preventDefault();
-    var myFirebase = firebase.database().ref();
-    var contacts = myFirebase.child("contact");
-    contacts.push({
-    Name: document.getElementById("contactName").value,
-    Email: document.getElementById("contactEmail").value,
-    Phone : document.getElementById("contactPhone").value,
-    Query:document.getElementById("contactQuery").value
-  }).then(()=>{
-    alert("Thank You ! Your Query is submitted, we will contact you soon. ");
-    window.location.href="/";
-  });
 
-    }
-  </script>
-<script id="INLINE_PEN_JS_ID">
-    
-var select = function (s) {
-  return document.querySelector(s);
-};
+    $(document).ready(function () {
+      $("#btnOpenForm").on("click", function (event) {
+        event.preventDefault();
+        $(".form-popup-bg").addClass("is-visible");
+      });
 
-function randomBetween(min, max)
-{
-  var number = Math.floor(Math.random() * (max - min + 1) + min);
-
-  if (number !== 0) {
-    return number;
-  } else {
-    return 0.5;
-  }
-}
-
-var tl = new TimelineMax();
-
-for (var i = 0; i < 20; i++) {if (window.CP.shouldStopExecution(0)) break;
-
-  var t = TweenMax.to(select('.bubble' + i), randomBetween(1, 1.5), {
-    x: randomBetween(12, 15) * randomBetween(-1, 1),
-    y: randomBetween(12, 15) * randomBetween(-1, 1),
-    repeat: -1,
-    repeatDelay: randomBetween(0.2, 0.5),
-    yoyo: true,
-    ease: Elastic.easeOut.config(1, 0.5) });
-
-
-  tl.add(t, (i + 1) / 0.6);
-}window.CP.exitedLoop(0);
-
-tl.seek(50);
-    
-  </script>
-<script id="rendered-js">
-const navSlide = () => {
-  const burger = document.querySelector('.burger');
-  const nav = document.querySelector('.nav-links');
-  const navLinks = document.querySelectorAll('.nav-links li');
-
-  //Toggle Nav
-  burger.addEventListener('click', () => {
-    nav.classList.toggle('nav-active');
-
-    //Animate Links
-    navLinks.forEach((link, index) => {
-      if (link.style.animation) {
-        link.style.animation = '';
-      } else {
-        link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.5}s`;
-
-      }
+      $(".form-popup-bg").on("click", function (event) {
+        if ($(event.target).is(".form-popup-bg") || $(event.target).is("#btnCloseForm")) {
+          event.preventDefault();
+          $(this).removeClass("is-visible");
+        }
+      });
     });
 
-    //burger animation
-    burger.classList.toggle('toggle');
-
-
-  });
-
-};
-
-navSlide();
-function closeForm() {
-  $('.form-popup-bg').removeClass('is-visible');
-}
-
-$(document).ready(function ($) {
-
-  /* Contact Form Interactions */
-  $('#btnOpenForm').on('click', function (event) {
-    event.preventDefault();
-
-    $('.form-popup-bg').addClass('is-visible');
-  });
-
-  //close popup when clicking x or off popup
-  $('.form-popup-bg').on('click', function (event) {
-    if ($(event.target).is('.form-popup-bg') || $(event.target).is('#btnCloseForm')) {
+    function checkCondition() {
       event.preventDefault();
-      $(this).removeClass('is-visible');
+      const name = document.getElementById("contactName").value.trim();
+      const email = document.getElementById("contactEmail").value.trim();
+      const phone = document.getElementById("contactPhone").value.trim();
+      const query = document.getElementById("contactQuery").value.trim();
+
+      if (!name) {
+        alert("Name can't be blank!");
+        return;
+      }
+      if (!email) {
+        alert("Email can't be blank!");
+        return;
+      }
+      if (!phone) {
+        alert("Phone number can't be blank!");
+        return;
+      }
+      if (!query) {
+        alert("Message can't be blank!");
+        return;
+      }
+
+      contact(name, email, phone, query);
     }
-  });
 
+    function contact(name, email, phone, query) {
+      event.preventDefault();
+      var myFirebase = firebase.database().ref();
+      var contacts = myFirebase.child("contact");
+      contacts
+        .push({
+          Name: name,
+          Email: email,
+          Phone: phone,
+          Query: query,
+        })
+        .then(() => {
+          alert("Thank you! Your query is submitted, I will contact you soon.");
+          window.location.href = "/";
+        })
+        .catch((err) => {
+          console.error(err);
+          alert("Something went wrong. Please try again later.");
+        });
+    }
+  </script>
 
-
-});
-
-    </script>
-	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-	<script src="js/main.js"></script>
+  <script>
+    window.jQuery ||
+      document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\\/script>');
+  </script>
+  <script src="js/main.js"></script>
 </body>
 </html>
