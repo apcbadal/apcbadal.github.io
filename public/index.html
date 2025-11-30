@@ -272,10 +272,12 @@
     .avatar-shell img {
       width: 170px;
       height: 170px;
-      border-radius: 999px;
+      aspect-ratio: 1 / 1;
       object-fit: cover;
+      border-radius: 999px;
       border: 4px solid #020617;
       display: block;
+      image-rendering: auto;
     }
 
     .hero-location {
@@ -543,376 +545,395 @@
   </style>
 </head>
 <body>
-  <div class="page-shell">
-    <!-- NAVBAR -->
-    <nav>
-      <div class="nav-inner">
-        <div class="logo-text">ANSHUMAN BADAL</div>
-        <ul class="nav-links">
-          <li><a href="#top">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#" id="btnOpenForm">Contact</a></li>
-        </ul>
-        <div class="burger">
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      </div>
-    </nav>
-
-    <!-- HERO -->
-    <header id="top" class="hero">
-      <div class="container-main">
-        <div class="hero-inner">
-          <div>
-            <h1 class="hero-title">Hi, I’m Anshuman <span>👋</span></h1>
-            <p class="hero-subtitle">
-              Full Stack Engineer specializing in Java, Spring Boot, React, GraphQL and AWS Cloud.
-            </p>
-
-            <div class="hero-badges-row">
-              <span class="pill-badge">Full Stack Engineering</span>
-              <span class="pill-badge">Production Support</span>
-              <span class="pill-badge">AWS & Cloud</span>
-              <span class="pill-badge pill-badge--soft">Incident / Change / Problem Management</span>
-            </div>
-
-            <p class="hero-text-main">
-              I build and support large-scale, production-grade applications with a focus on reliability,
-              performance, and clear architecture. I enjoy deep debugging, designing scalable backend systems,
-              and working with modern cloud-native stacks.
-            </p>
-
-            <div class="hero-cta-row">
-              <a href="mailto:apcbadal@gmail.com"><button class="btn-primary">Email Me</button></a>
-              <a href="https://www.linkedin.com/in/apcbadal" target="_blank"><button class="btn-outline">View LinkedIn</button></a>
-            </div>
-          </div>
-
-          <div class="hero-right">
-            <div class="avatar-shell">
-              <img src="images/anshu.jpg" alt="Anshuman profile" />
-            </div>
-            <div class="hero-location">
-              Gurugram / Noida, India ·
-              <a href="tel:+917091177725">+91 7091177725</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <!-- ABOUT -->
-    <section id="about">
-      <div class="container-main section-stack">
-        <div class="section-card">
-          <div class="section-title">About</div>
-          <p class="text-body">
-            I am a results-driven Software Engineer with strong expertise in Java, Spring Boot, React, PostgreSQL, NoSQL
-            and AWS Cloud, specializing in managing and supporting large-scale production applications where stability,
-            performance, and quick incident resolution are critical.
-          </p>
-          <p class="text-body">
-            My experience includes end-to-end ownership of production systems across Incident, Change and Problem
-            Management, proactive dependency upgrades, and deep collaboration with stakeholders. I work extensively with
-            modern cloud architectures using AWS CDK, Amplify, CloudFormation, AppSync, GraphQL and DynamoDB to deliver
-            scalable, secure, and resilient solutions.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience">
-      <div class="container-main section-stack">
-        <div class="section-card">
-          <div class="section-title">Experience</div>
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-header">
-                <div class="role">Application Development Senior Analyst</div>
-                <div class="company">Accenture</div>
-                <div class="meta">September 2024 – Present · Gurugram, India</div>
-              </div>
-              <div class="timeline-body">
-                <ul>
-                  <li>Managing and supporting large-scale production applications with high availability.</li>
-                  <li>Leading Incident, Change and Problem Management with detailed RCA and long-term fixes.</li>
-                  <li>Executing deployments on complex AWS architectures using CDK, CloudFormation, AppSync, GraphQL, DynamoDB.</li>
-                  <li>Collaborating daily with stakeholders on incidents, analysis and development updates.</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-header">
-                <div class="role">Senior Software Developer</div>
-                <div class="company">Velocis Systems Pvt. Ltd.</div>
-                <div class="meta">January 2024 – September 2024 · New Delhi, India</div>
-              </div>
-              <div class="timeline-body">
-                <ul>
-                  <li>Worked with NIC (Govt. of India) on Smart Public Distribution System projects.</li>
-                  <li>Designed and developed APIs for the One Nation One Ration Card scheme.</li>
-                  <li>Handled a large PostgreSQL database (~40 TB) for efficient data storage and retrieval.</li>
-                  <li>Set up GitLab and CI/CD pipelines to streamline deployments across multiple services.</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-header">
-                <div class="role">Software Engineer</div>
-                <div class="company">Blue Berry e-Services Pvt. Ltd.</div>
-                <div class="meta">October 2021 – January 2024 · Noida, India</div>
-              </div>
-              <div class="timeline-body">
-                <ul>
-                  <li>Integrated Truecaller authentication, reducing phone verification cost by ~80%.</li>
-                  <li>Implemented 1-tap instant verification, eliminating OTP SMS and reducing drop-offs.</li>
-                  <li>Built CI/CD pipelines using GitHub Actions, Docker and Azure (around 40% faster release cycles).</li>
-                  <li>Improved performance using Redis and JPA (up to 50% faster load times).</li>
-                  <li>Developed features in React Native for Android and iOS.</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-header">
-                <div class="role">Software Engineer Intern</div>
-                <div class="company">Blue Berry e-Services Pvt. Ltd.</div>
-                <div class="meta">July 2021 – September 2021 · Noida, India</div>
-              </div>
-              <div class="timeline-body">
-                <ul>
-                  <li>Built authentication UI, profile screens and navigation using React Native.</li>
-                  <li>Integrated in-app update support and enhanced overall app UX.</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-header">
-                <div class="role">Frontend Developer Intern</div>
-                <div class="company">Prolincur Technologies</div>
-                <div class="meta">June 2021 – June 2021</div>
-              </div>
-              <div class="timeline-body">
-                <ul>
-                  <li>Worked on React and React-Three.js to build interactive frontend components.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- EDUCATION + PROJECTS -->
-    <section id="projects">
-      <div class="container-main section-stack">
-        <div class="section-card">
-          <div class="section-title">Education</div>
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-header">
-                <div class="role">B.Tech, Computer Science & Engineering</div>
-                <div class="company">Katihar Engineering College, Katihar</div>
-                <div class="meta">September 2016 – December 2020 · CGPA: 7.4</div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-header">
-                <div class="role">XII (BSEB Patna)</div>
-                <div class="company">+2 Project Girls High School, Bhairoganj</div>
-                <div class="meta">Year: 2016 · Percentage: 54%</div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-header">
-                <div class="role">X (BSEB Patna)</div>
-                <div class="company">+2 Project Girls High School, Bhairoganj</div>
-                <div class="meta">Year: 2014 · Percentage: 70%</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="section-card" style="margin-top: 22px;">
-          <div class="section-title">Projects</div>
-
-          <div class="project-item">
-            <div class="project-title">Online Attendance App</div>
-            <div class="project-meta">React Native · Firebase · 25 Dec 2019 – 15 Feb 2020</div>
-            <p class="text-body">
-              Built an Online Attendance App using React Native and Firebase that minimized paperwork for student
-              attendance and digitized the entire attendance process into a mobile app environment.
-            </p>
-          </div>
-
-          <div class="project-item">
-            <div class="project-title">College Website with Inventory Management System</div>
-            <div class="project-meta">HTML, CSS, JavaScript, Java, MySQL · 15 Nov 2019 – 3 Jan 2020</div>
-            <p class="text-body">
-              Contributed as part of the web team to develop the college website with an integrated inventory management
-              system. The system used HTML / CSS / JavaScript on the frontend and Java + MySQL on the backend.
-              <br />
-              Visit:
-              <a href="http://keck.ac.in" target="_blank" rel="noopener noreferrer">Katihar Engineering College, Katihar</a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SKILLS & EXTRAS -->
-    <section id="skills">
-      <div class="container-main section-stack">
-        <div class="section-card">
-          <div class="section-title">Skills & Tools</div>
-          <div class="skills-grid">
-            <div class="skill-chip">Java</div>
-            <div class="skill-chip">Spring Boot</div>
-            <div class="skill-chip">REST APIs</div>
-            <div class="skill-chip">React</div>
-            <div class="skill-chip">React Native</div>
-            <div class="skill-chip">JavaScript</div>
-            <div class="skill-chip">PostgreSQL</div>
-            <div class="skill-chip">MySQL</div>
-            <div class="skill-chip">NoSQL / DynamoDB</div>
-            <div class="skill-chip">AWS CDK</div>
-            <div class="skill-chip">AWS Amplify</div>
-            <div class="skill-chip">AWS CloudFormation</div>
-            <div class="skill-chip">AWS AppSync</div>
-            <div class="skill-chip">GraphQL</div>
-            <div class="skill-chip">Git / GitHub / GitLab</div>
-            <div class="skill-chip">CI/CD – Jenkins, GitHub Actions</div>
-            <div class="skill-chip">Docker</div>
-            <div class="skill-chip">Windows / Linux</div>
-          </div>
-
-          <div class="two-column-small">
-            <div>
-              <div class="sub-title-inline">Achievements</div>
-              <p class="text-body">Won the Ethical Hacking Competition at GCE, Gaya.</p>
-            </div>
-            <div>
-              <div class="sub-title-inline">Hobbies</div>
-              <p class="text-body">Playing Carrom.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT POPUP -->
-    <div class="form-popup-bg">
-      <div class="form-container">
-        <button id="btnCloseForm" class="close-button">✕</button>
-        <h1>Contact Me</h1>
-        <p>Want to discuss an opportunity, project or collaboration? Drop a message.</p>
-        <form>
-          <div class="form-group">
-            <label for="contactName">Name</label>
-            <input type="text" class="form-control" id="contactName" />
-          </div>
-          <div class="form-group">
-            <label for="contactEmail">E-Mail Address</label>
-            <input class="form-control" type="email" id="contactEmail" />
-          </div>
-          <div class="form-group">
-            <label for="contactPhone">Phone Number</label>
-            <input class="form-control" type="text" id="contactPhone" />
-          </div>
-          <div class="form-group">
-            <label for="contactQuery">Your Message</label>
-            <textarea class="form-control" id="contactQuery"></textarea>
-          </div>
-          <input type="submit" value="Submit" onclick="checkCondition()" />
-        </form>
+<div class="page-shell">
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-inner">
+      <div class="logo-text">ANSHUMAN BADAL</div>
+      <ul class="nav-links">
+        <li><a href="#top">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#" id="btnOpenForm">Contact</a></li>
+      </ul>
+      <div class="burger">
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
     </div>
+  </nav>
 
-    <!-- FOOTER -->
-    <footer>
-      © <span id="year"></span> Anshuman Badal · Built with ❤️ using JavaScript & Firebase ·
-      <a href="https://github.com/apcbadal" target="_blank">GitHub</a> ·
-      <a href="https://twitter.com/anshumanbadal" target="_blank">Twitter</a> ·
-      <a href="https://www.linkedin.com/in/apcbadal" target="_blank">LinkedIn</a>
-    </footer>
+  <!-- HERO -->
+  <header id="top" class="hero">
+    <div class="container-main">
+      <div class="hero-inner">
+        <div>
+          <h1 class="hero-title">Hi, I’m Anshuman <span>👋</span></h1>
+          <p class="hero-subtitle">
+            Full Stack Engineer specializing in Java, Spring Boot, React, GraphQL and AWS Cloud.
+          </p>
+
+          <div class="hero-badges-row">
+            <span class="pill-badge">Full Stack Engineering</span>
+            <span class="pill-badge">Production Support</span>
+            <span class="pill-badge">AWS & Cloud</span>
+            <span class="pill-badge pill-badge--soft">Incident / Change / Problem Management</span>
+          </div>
+
+          <p class="hero-text-main">
+            I build and support large-scale, production-grade applications with a focus on reliability,
+            performance, and clear architecture. I enjoy deep debugging, designing scalable backend systems,
+            and working with modern cloud-native stacks.
+          </p>
+
+          <div class="hero-cta-row">
+            <a href="mailto:apcbadal@gmail.com"><button class="btn-primary">Email Me</button></a>
+            <a href="https://www.linkedin.com/in/apcbadal" target="_blank"><button class="btn-outline">View LinkedIn</button></a>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="avatar-shell">
+            <img src="images/anshu1.jpeg" alt="Anshuman profile" />
+          </div>
+          <div class="hero-location">
+            Gurugram / Noida, India ·
+            <a href="tel:+917091177725">+91 7091177725</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container-main section-stack">
+      <div class="section-card">
+        <div class="section-title">About</div>
+        <p class="text-body">
+          I am a results-driven Software Engineer with strong expertise in Java, Spring Boot, React, PostgreSQL, NoSQL
+          and AWS Cloud, specializing in managing and supporting large-scale production applications where stability,
+          performance, and quick incident resolution are critical.
+        </p>
+        <p class="text-body">
+          My experience includes end-to-end ownership of production systems across Incident, Change and Problem
+          Management, proactive dependency upgrades, and deep collaboration with stakeholders. I work extensively with
+          modern cloud architectures using AWS CDK, Amplify, CloudFormation, AppSync, GraphQL and DynamoDB to deliver
+          scalable, secure, and resilient solutions.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="container-main section-stack">
+      <div class="section-card">
+        <div class="section-title">Experience</div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <div class="role">Application Development Senior Analyst</div>
+              <div class="company">Accenture</div>
+              <div class="meta">September 2024 – Present · Gurugram, India</div>
+            </div>
+            <div class="timeline-body">
+              <ul>
+                <li>Managing and supporting large-scale production applications with high availability.</li>
+                <li>Leading Incident, Change and Problem Management with detailed RCA and long-term fixes.</li>
+                <li>Executing deployments on complex AWS architectures using CDK, CloudFormation, AppSync, GraphQL, DynamoDB.</li>
+                <li>Collaborating daily with stakeholders on incidents, analysis and development updates.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <div class="role">Senior Software Developer</div>
+              <div class="company">Velocis Systems Pvt. Ltd.</div>
+              <div class="meta">January 2024 – September 2024 · New Delhi, India</div>
+            </div>
+            <div class="timeline-body">
+              <ul>
+                <li>Worked with NIC (Govt. of India) on Smart Public Distribution System projects.</li>
+                <li>Designed and developed APIs for the One Nation One Ration Card scheme.</li>
+                <li>Handled a large PostgreSQL database (~40 TB) for efficient data storage and retrieval.</li>
+                <li>Set up GitLab and CI/CD pipelines to streamline deployments across multiple services.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <div class="role">Software Engineer</div>
+              <div class="company">Blue Berry e-Services Pvt. Ltd.</div>
+              <div class="meta">October 2021 – January 2024 · Noida, India</div>
+            </div>
+            <div class="timeline-body">
+              <ul>
+                <li>Integrated Truecaller authentication, reducing phone verification cost by ~80%.</li>
+                <li>Implemented 1-tap instant verification, eliminating OTP SMS and reducing drop-offs.</li>
+                <li>Built CI/CD pipelines using GitHub Actions, Docker and Azure (around 40% faster release cycles).</li>
+                <li>Improved performance using Redis and JPA (up to 50% faster load times).</li>
+                <li>Developed features in React Native for Android and iOS.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <div class="role">Software Engineer Intern</div>
+              <div class="company">Blue Berry e-Services Pvt. Ltd.</div>
+              <div class="meta">July 2021 – September 2021 · Noida, India</div>
+            </div>
+            <div class="timeline-body">
+              <ul>
+                <li>Built authentication UI, profile screens and navigation using React Native.</li>
+                <li>Integrated in-app update support and enhanced overall app UX.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <div class="role">Frontend Developer Intern</div>
+              <div class="company">Prolincur Technologies</div>
+              <div class="meta">June 2021 – June 2021</div>
+            </div>
+            <div class="timeline-body">
+              <ul>
+                <li>Worked on React and React-Three.js to build interactive frontend components.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION + PROJECTS -->
+  <section id="projects">
+    <div class="container-main section-stack">
+      <div class="section-card">
+        <div class="section-title">Education</div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <div class="role">B.Tech, Computer Science & Engineering</div>
+              <div class="company">Katihar Engineering College, Katihar</div>
+              <div class="meta">September 2016 – December 2020 · CGPA: 7.4</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <div class="role">XII (BSEB Patna)</div>
+              <div class="company">+2 Project Girls High School, Bhairoganj</div>
+              <div class="meta">Year: 2016 · Percentage: 54%</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <div class="role">X (BSEB Patna)</div>
+              <div class="company">+2 Project Girls High School, Bhairoganj</div>
+              <div class="meta">Year: 2014 · Percentage: 70%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-card" style="margin-top: 22px;">
+        <div class="section-title">Projects</div>
+
+        <!-- NEW PROJECT AT TOP -->
+        <div class="project-item">
+          <div class="project-title">Bihar Government Internship Portal</div>
+          <div class="project-meta">
+            React · Spring Boot · Spring Security · PostgreSQL · 2023–2024 ·
+            <a href="https://internship.bihar.gov.in" target="_blank" rel="noopener noreferrer">internship.bihar.gov.in</a>
+          </div>
+          <p class="text-body">
+            A state-level internship portal developed for B.Tech students of Bihar, enabling students, colleges,
+            and government departments to manage internship applications digitally.
+          </p>
+          <p class="text-body">
+            I managed the <strong>Admin Reporting</strong> module using <strong>React</strong> and secured backend
+            REST APIs with <strong>Spring Boot</strong> and <strong>Spring Security</strong>. I also improved
+            <strong>UI/UX</strong> across Recruiter, College, and Admin dashboards, enhancing usability,
+            navigation, and reporting accuracy for thousands of users.
+          </p>
+        </div>
+
+        <div class="project-item">
+          <div class="project-title">Online Attendance App</div>
+          <div class="project-meta">React Native · Firebase · 25 Dec 2019 – 15 Feb 2020</div>
+          <p class="text-body">
+            Built an Online Attendance App using React Native and Firebase that minimized paperwork for student
+            attendance and digitized the entire attendance process into a mobile app environment.
+          </p>
+        </div>
+
+        <div class="project-item">
+          <div class="project-title">College Website with Inventory Management System</div>
+          <div class="project-meta">HTML, CSS, JavaScript, Java, MySQL · 15 Nov 2019 – 3 Jan 2020</div>
+          <p class="text-body">
+            Contributed as part of the web team to develop the college website with an integrated inventory management
+            system. The system used HTML / CSS / JavaScript on the frontend and Java + MySQL on the backend.
+            <br />
+            Visit:
+            <a href="http://keck.ac.in" target="_blank" rel="noopener noreferrer">Katihar Engineering College, Katihar</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS & EXTRAS -->
+  <section id="skills">
+    <div class="container-main section-stack">
+      <div class="section-card">
+        <div class="section-title">Skills & Tools</div>
+        <div class="skills-grid">
+          <div class="skill-chip">Java</div>
+          <div class="skill-chip">Spring Boot</div>
+          <div class="skill-chip">REST APIs</div>
+          <div class="skill-chip">React</div>
+          <div class="skill-chip">React Native</div>
+          <div class="skill-chip">JavaScript</div>
+          <div class="skill-chip">PostgreSQL</div>
+          <div class="skill-chip">MySQL</div>
+          <div class="skill-chip">NoSQL / DynamoDB</div>
+          <div class="skill-chip">AWS CDK</div>
+          <div class="skill-chip">AWS Amplify</div>
+          <div class="skill-chip">AWS CloudFormation</div>
+          <div class="skill-chip">AWS AppSync</div>
+          <div class="skill-chip">GraphQL</div>
+          <div class="skill-chip">Git / GitHub / GitLab</div>
+          <div class="skill-chip">CI/CD – Jenkins, GitHub Actions</div>
+          <div class="skill-chip">Docker</div>
+          <div class="skill-chip">Windows / Linux</div>
+        </div>
+
+        <div class="two-column-small">
+          <div>
+            <div class="sub-title-inline">Achievements</div>
+            <p class="text-body">Won the Ethical Hacking Competition at GCE, Gaya.</p>
+          </div>
+          <div>
+            <div class="sub-title-inline">Hobbies</div>
+            <p class="text-body">Playing Carrom.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT POPUP -->
+  <div class="form-popup-bg">
+    <div class="form-container">
+      <button id="btnCloseForm" class="close-button">✕</button>
+      <h1>Contact Me</h1>
+      <p>Want to discuss an opportunity, project or collaboration? Drop a message.</p>
+      <form>
+        <div class="form-group">
+          <label for="contactName">Name</label>
+          <input type="text" class="form-control" id="contactName" />
+        </div>
+        <div class="form-group">
+          <label for="contactEmail">E-Mail Address</label>
+          <input class="form-control" type="email" id="contactEmail" />
+        </div>
+        <div class="form-group">
+          <label for="contactPhone">Phone Number</label>
+          <input class="form-control" type="text" id="contactPhone" />
+        </div>
+        <div class="form-group">
+          <label for="contactQuery">Your Message</label>
+          <textarea class="form-control" id="contactQuery"></textarea>
+        </div>
+        <input type="submit" value="Submit" onclick="checkCondition()" />
+      </form>
+    </div>
   </div>
 
-  <!-- JS: nav + contact -->
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+  <!-- FOOTER -->
+  <footer>
+    © <span id="year"></span> Anshuman Badal · Built with ❤️ using JavaScript & Firebase ·
+    <a href="https://github.com/apcbadal" target="_blank">GitHub</a> ·
+    <a href="https://twitter.com/anshumanbadal" target="_blank">Twitter</a> ·
+    <a href="https://www.linkedin.com/in/apcbadal" target="_blank">LinkedIn</a>
+  </footer>
+</div>
 
-    const navSlide = () => {
-      const burger = document.querySelector(".burger");
-      const nav = document.querySelector(".nav-links");
+<!-- JS: nav + contact -->
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-      burger.addEventListener("click", () => {
-        nav.classList.toggle("nav-active");
-      });
-    };
-    navSlide();
+  const navSlide = () => {
+    const burger = document.querySelector(".burger");
+    const nav = document.querySelector(".nav-links");
 
-    function closeForm() {
-      $(".form-popup-bg").removeClass("is-visible");
-    }
+    burger.addEventListener("click", () => {
+      nav.classList.toggle("nav-active");
+    });
+  };
+  navSlide();
 
-    $(document).ready(function () {
-      $("#btnOpenForm").on("click", function (event) {
-        event.preventDefault();
-        $(".form-popup-bg").addClass("is-visible");
-      });
+  function closeForm() {
+    $(".form-popup-bg").removeClass("is-visible");
+  }
 
-      $(".form-popup-bg").on("click", function (event) {
-        if ($(event.target).is(".form-popup-bg") || $(event.target).is("#btnCloseForm")) {
-          event.preventDefault();
-          $(this).removeClass("is-visible");
-        }
-      });
+  $(document).ready(function () {
+    $("#btnOpenForm").on("click", function (event) {
+      event.preventDefault();
+      $(".form-popup-bg").addClass("is-visible");
     });
 
-    function checkCondition() {
-      event.preventDefault();
-      const name = document.getElementById("contactName").value.trim();
-      const email = document.getElementById("contactEmail").value.trim();
-      const phone = document.getElementById("contactPhone").value.trim();
-      const query = document.getElementById("contactQuery").value.trim();
+    $(".form-popup-bg").on("click", function (event) {
+      if ($(event.target).is(".form-popup-bg") || $(event.target).is("#btnCloseForm")) {
+        event.preventDefault();
+        $(this).removeClass("is-visible");
+      }
+    });
+  });
 
-      if (!name) return alert("Name can't be blank!");
-      if (!email) return alert("Email can't be blank!");
-      if (!phone) return alert("Phone number can't be blank!");
-      if (!query) return alert("Message can't be blank!");
+  function checkCondition() {
+    event.preventDefault();
+    const name = document.getElementById("contactName").value.trim();
+    const email = document.getElementById("contactEmail").value.trim();
+    const phone = document.getElementById("contactPhone").value.trim();
+    const query = document.getElementById("contactQuery").value.trim();
 
-      contact(name, email, phone, query);
-    }
+    if (!name) return alert("Name can't be blank!");
+    if (!email) return alert("Email can't be blank!");
+    if (!phone) return alert("Phone number can't be blank!");
+    if (!query) return alert("Message can't be blank!");
 
-    function contact(name, email, phone, query) {
-      event.preventDefault();
-      var myFirebase = firebase.database().ref();
-      var contacts = myFirebase.child("contact");
-      contacts
-        .push({
-          Name: name,
-          Email: email,
-          Phone: phone,
-          Query: query,
-        })
-        .then(() => {
-          alert("Thank you! Your query is submitted, I will contact you soon.");
-          window.location.href = "/";
-        })
-        .catch((err) => {
-          console.error(err);
-          alert("Something went wrong. Please try again later.");
-        });
-    }
-  </script>
+    contact(name, email, phone, query);
+  }
+
+  function contact(name, email, phone, query) {
+    event.preventDefault();
+    var myFirebase = firebase.database().ref();
+    var contacts = myFirebase.child("contact");
+    contacts
+      .push({
+        Name: name,
+        Email: email,
+        Phone: phone,
+        Query: query,
+      })
+      .then(() => {
+        alert("Thank you! Your query is submitted, I will contact you soon.");
+        window.location.href = "/";
+      })
+      .catch((err) => {
+        console.error(err);
+        alert("Something went wrong. Please try again later.");
+      });
+  }
+</script>
 </body>
 </html>
