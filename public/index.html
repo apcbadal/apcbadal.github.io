@@ -3,85 +3,121 @@
 <head>
   <meta charset="UTF-8" />
   <title>Anshuman Badal | Full Stack Engineer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3.0, minimum-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="shortcut icon" href="images/anshu.jpg" />
 
-  <!-- Reset & Base Styles -->
+  <!-- Reset & Bootstrap (optional but fine to keep) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
 
-  <!-- Custom Styles (your existing files) -->
-  <link rel="stylesheet" href="css/normalize.css" />
-  <link rel="stylesheet" href="css/nav.css" />
-  <link rel="stylesheet" href="css/main.css" />
-  <link rel="stylesheet" href="css/contactus.css" />
-  <link rel="stylesheet" href="css/resume.css" />
-
+  <!-- Firebase & jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script type="text/javascript" src="js/protectode.js"></script>
-  <script src="js/vendor/modernizr-2.6.2.min.js"></script>
-
-  <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-storage.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-database.js"></script>
   <script src="init-firebase.js"></script>
 
-  <!-- Optional: Google Font -->
+  <!-- Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
+    :root {
+      --bg-body: #020617;
+      --bg-elevated: #020817;
+      --bg-card: #020817;
+      --bg-hero: radial-gradient(circle at top, #1e293b 0, #020617 55%);
+      --border-subtle: rgba(148, 163, 184, 0.25);
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.12);
+      --accent-alt: #38bdf8;
+      --text-main: #e5e7eb;
+      --text-soft: #9ca3af;
+      --text-muted: #6b7280;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.85);
+      --radius-card: 18px;
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #0f172a;
-      color: #e5e7eb;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg-body);
+      color: var(--text-main);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
     a {
-      color: #38bdf8;
+      color: var(--accent-alt);
+      text-decoration: none;
     }
 
     a:hover {
-      text-decoration: none;
       color: #0ea5e9;
     }
 
-    /* Navbar */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 32px;
-      background: rgba(15, 23, 42, 0.9);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(10px);
+    /* Layout helpers */
+    .page-shell {
+      min-height: 100vh;
+      background: radial-gradient(circle at top, rgba(148, 163, 184, 0.18), transparent 55%);
     }
 
-    nav .logo h4 {
-      color: #f9fafb;
-      margin: 0;
+    .container-main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    section {
+      padding: 40px 0;
+    }
+
+    /* NAVBAR */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(2, 6, 23, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(30, 64, 175, 0.35);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-text {
+      font-size: 0.96rem;
       font-weight: 600;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #f9fafb;
     }
 
     .nav-links {
       list-style: none;
       display: flex;
-      gap: 1.5rem;
+      gap: 1.75rem;
       margin: 0;
+      align-items: center;
     }
 
     .nav-links li a {
-      color: #cbd5f5;
-      font-size: 0.95rem;
-      letter-spacing: 0.03em;
+      font-size: 0.82rem;
       text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #cbd5f5;
     }
 
     .nav-links li a:hover {
@@ -94,8 +130,8 @@
     }
 
     .burger div {
-      width: 25px;
-      height: 3px;
+      width: 24px;
+      height: 2px;
       background-color: #e5e7eb;
       margin: 5px;
       transition: all 0.3s ease;
@@ -105,14 +141,13 @@
       .nav-links {
         position: absolute;
         right: 0;
-        top: 64px;
-        height: calc(100vh - 64px);
+        top: 60px;
+        height: calc(100vh - 60px);
         background: #020617;
         flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        padding-top: 2rem;
-        width: 60%;
+        align-items: flex-start;
+        padding: 24px;
+        width: 70%;
         transform: translateX(100%);
         transition: transform 0.3s ease-in;
       }
@@ -126,225 +161,293 @@
       }
     }
 
-    /* Hero / Profile */
+    /* HERO */
     .hero {
-      padding: 80px 16px 40px;
-      background: radial-gradient(circle at top, #1d293b, #020617);
+      background: var(--bg-hero);
+      padding: 56px 0 40px;
     }
 
-    .hero .container {
-      display: flex;
-      flex-wrap: wrap;
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 36px;
       align-items: center;
-      justify-content: center;
-      gap: 2.5rem;
     }
 
-    .hero-left {
-      max-width: 520px;
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+        padding-top: 16px;
+      }
     }
 
     .hero-title {
-      font-size: 2.4rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
+      font-size: 2.1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .hero-title span {
+      font-size: 1.9rem;
     }
 
     .hero-subtitle {
-      font-size: 1.1rem;
-      font-weight: 400;
-      color: #9ca3af;
-      margin-bottom: 1.2rem;
+      font-size: 1.02rem;
+      color: var(--text-soft);
+      margin-bottom: 18px;
+      max-width: 470px;
     }
 
-    .hero-badges {
+    .hero-badges-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1.2rem;
+      gap: 8px;
+      margin-bottom: 18px;
     }
 
-    .badge-pill {
+    .pill-badge {
+      padding: 4px 11px;
       border-radius: 999px;
-      padding: 0.25rem 0.75rem;
-      font-size: 0.75rem;
-      border: 1px solid rgba(148, 163, 184, 0.5);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      font-size: 0.72rem;
       color: #e5e7eb;
+      background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.25), rgba(15, 23, 42, 0.95));
     }
 
-    .hero-cta {
+    .pill-badge--soft {
+      border-color: transparent;
+      background: var(--accent-soft);
+      color: #bbf7d0;
+    }
+
+    .hero-text-main {
+      font-size: 0.96rem;
+      color: var(--text-soft);
+      max-width: 520px;
+    }
+
+    .hero-cta-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-top: 1rem;
+      gap: 10px;
+      margin-top: 20px;
     }
 
-    .btn-primary-custom {
-      background: linear-gradient(135deg, #22c55e, #16a34a);
-      border: none;
-      color: #f9fafb;
-      padding: 0.6rem 1.4rem;
+    .btn-primary {
       border-radius: 999px;
-      font-size: 0.9rem;
+      padding: 9px 18px;
+      border: none;
+      background: linear-gradient(135deg, var(--accent), #16a34a);
+      color: #f9fafb;
+      font-size: 0.86rem;
       font-weight: 500;
       cursor: pointer;
+      box-shadow: 0 12px 30px rgba(34, 197, 94, 0.25);
     }
 
-    .btn-outline-custom {
+    .btn-outline {
       border-radius: 999px;
-      border: 1px solid #64748b;
-      padding: 0.6rem 1.4rem;
-      font-size: 0.9rem;
-      font-weight: 500;
-      background: transparent;
+      padding: 9px 18px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.75);
       color: #e5e7eb;
+      font-size: 0.86rem;
+      font-weight: 500;
       cursor: pointer;
     }
 
     .hero-right {
+      justify-self: center;
       text-align: center;
     }
 
-    .profile-image-wrapper {
+    .avatar-shell {
+      padding: 3px;
       border-radius: 999px;
-      padding: 4px;
-      background: conic-gradient(from 180deg, #22c55e, #06b6d4, #6366f1, #22c55e);
+      background: conic-gradient(from 200deg, #22c55e, #38bdf8, #6366f1, #22c55e);
       display: inline-block;
+      box-shadow: 0 18px 35px rgba(15, 23, 42, 0.9);
     }
 
-    .profile-image-wrapper img {
-      width: 180px;
-      height: 180px;
+    .avatar-shell img {
+      width: 170px;
+      height: 170px;
       border-radius: 999px;
       object-fit: cover;
       border: 4px solid #020617;
+      display: block;
     }
 
     .hero-location {
-      margin-top: 0.75rem;
-      font-size: 0.9rem;
-      color: #9ca3af;
+      margin-top: 10px;
+      font-size: 0.86rem;
+      color: var(--text-soft);
     }
 
-    /* Generic Section */
-    section {
-      padding: 40px 16px;
+    .hero-location a {
+      color: var(--accent-alt);
     }
 
-    section .section-title {
-      font-size: 1.4rem;
+    /* SECTIONS */
+    .section-title {
+      font-size: 1.1rem;
       font-weight: 600;
-      margin-bottom: 1.5rem;
-      color: #e5e7eb;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #9ca3af;
+      margin-bottom: 18px;
     }
 
-    /* About */
-    .about-text {
-      max-width: 720px;
-      color: #e5e7eb;
+    .section-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-card);
+      border: 1px solid var(--border-subtle);
+      padding: 20px 22px;
+      box-shadow: var(--shadow-soft);
     }
 
-    /* Experience */
+    .section-stack {
+      display: grid;
+      gap: 24px;
+    }
+
+    .text-body {
+      font-size: 0.92rem;
+      color: var(--text-soft);
+    }
+
+    .text-body + .text-body {
+      margin-top: 10px;
+    }
+
+    /* EXPERIENCE */
+    .timeline {
+      display: grid;
+      gap: 18px;
+    }
+
     .timeline-item {
-      border-left: 2px solid #1f2937;
-      padding-left: 1rem;
-      margin-bottom: 1.5rem;
+      border-radius: 14px;
+      padding: 16px 18px;
+      background: #020617;
+      border: 1px solid rgba(31, 41, 55, 0.9);
       position: relative;
+      overflow: hidden;
     }
 
     .timeline-item::before {
       content: "";
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      background: #22c55e;
       position: absolute;
-      left: -6px;
-      top: 4px;
+      left: 14px;
+      top: 20px;
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
     }
 
-    .timeline-role {
+    .timeline-header {
+      padding-left: 18px;
+      margin-bottom: 4px;
+    }
+
+    .role {
+      font-size: 0.96rem;
       font-weight: 600;
     }
 
-    .timeline-company {
-      font-size: 0.95rem;
-      color: #9ca3af;
+    .company {
+      font-size: 0.86rem;
+      color: var(--text-soft);
     }
 
-    .timeline-meta {
-      font-size: 0.8rem;
-      color: #6b7280;
-      margin-bottom: 0.5rem;
+    .meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 3px;
     }
 
-    .timeline-list {
-      font-size: 0.9rem;
-      color: #d1d5db;
-      padding-left: 1rem;
+    .timeline-body {
+      padding-left: 18px;
+      margin-top: 8px;
     }
 
-    /* Projects */
-    .project-item {
-      margin-bottom: 1.5rem;
+    .timeline-body ul {
+      margin: 0;
+      padding-left: 16px;
+      color: var(--text-soft);
+      font-size: 0.86rem;
+    }
+
+    .timeline-body li + li {
+      margin-top: 4px;
+    }
+
+    /* PROJECTS */
+    .project-item + .project-item {
+      margin-top: 14px;
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      padding-top: 12px;
     }
 
     .project-title {
       font-weight: 600;
+      font-size: 0.96rem;
     }
 
     .project-meta {
       font-size: 0.8rem;
-      color: #9ca3af;
+      color: var(--text-muted);
+      margin-bottom: 4px;
     }
 
-    /* Skills Grid */
+    /* SKILLS */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 0.75rem;
-      max-width: 720px;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
+      margin-top: 4px;
     }
 
     .skill-chip {
-      padding: 0.5rem 0.75rem;
-      border-radius: 0.75rem;
+      padding: 8px 10px;
+      border-radius: 999px;
       background: #020617;
-      border: 1px solid #1e293b;
-      font-size: 0.85rem;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      font-size: 0.82rem;
       color: #e5e7eb;
-    }
-
-    /* Contact / Footer */
-    .contact-info-list {
-      list-style: none;
-      padding-left: 0;
-      margin-bottom: 1rem;
-    }
-
-    .contact-info-list li {
-      margin-bottom: 0.25rem;
-      font-size: 0.9rem;
-    }
-
-    footer {
-      padding: 16px;
       text-align: center;
-      font-size: 0.8rem;
-      color: #6b7280;
-      border-top: 1px solid #111827;
-      margin-top: 24px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    /* Popup Contact Form */
+    .two-column-small {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 22px;
+      margin-top: 16px;
+    }
+
+    .sub-title-inline {
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #9ca3af;
+      margin-bottom: 4px;
+    }
+
+    /* CONTACT POPUP */
     .form-popup-bg {
       position: fixed;
       inset: 0;
-      background: rgba(15, 23, 42, 0.85);
+      background: rgba(15, 23, 42, 0.9);
       display: none;
       align-items: center;
       justify-content: center;
-      z-index: 200;
+      z-index: 50;
+      padding: 16px;
     }
 
     .form-popup-bg.is-visible {
@@ -353,287 +456,360 @@
 
     .form-container {
       background: #020617;
-      padding: 24px;
-      border-radius: 16px;
+      border-radius: 18px;
+      border: 1px solid var(--border-subtle);
+      max-width: 420px;
       width: 100%;
-      max-width: 480px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-      border: 1px solid #1f2937;
+      padding: 20px 22px 18px;
+      box-shadow: var(--shadow-soft);
     }
 
     .form-container h1 {
-      margin-bottom: 0.5rem;
-      font-size: 1.3rem;
+      font-size: 1.02rem;
+      margin-bottom: 6px;
     }
 
     .form-container p {
-      font-size: 0.9rem;
-      color: #9ca3af;
-      margin-bottom: 1rem;
+      font-size: 0.84rem;
+      color: var(--text-soft);
+      margin-bottom: 10px;
     }
 
     .form-group label {
-      font-size: 0.85rem;
-      margin-bottom: 0.2rem;
+      font-size: 0.8rem;
+      margin-bottom: 2px;
+      color: var(--text-soft);
     }
 
     .close-button {
       border: none;
       background: transparent;
-      color: #9ca3af;
+      color: var(--text-soft);
       float: right;
-      font-size: 1rem;
       cursor: pointer;
+      font-size: 1rem;
     }
 
     .close-button:hover {
-      color: #f9fafb;
+      color: #ffffff;
+    }
+
+    input.form-control,
+    textarea.form-control {
+      background: #020617;
+      border-radius: 10px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      color: #e5e7eb;
+      font-size: 0.86rem;
+    }
+
+    input.form-control:focus,
+    textarea.form-control:focus {
+      outline: none;
+      box-shadow: 0 0 0 1px var(--accent-alt);
+      border-color: var(--accent-alt);
     }
 
     input[type="submit"] {
-      margin-top: 1rem;
+      margin-top: 10px;
       border-radius: 999px;
-      background: #22c55e;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
       border: none;
-      padding: 0.5rem 1.2rem;
-      color: #020617;
+      padding: 7px 18px;
+      color: #f9fafb;
+      font-size: 0.86rem;
       font-weight: 500;
       cursor: pointer;
+      box-shadow: 0 10px 25px rgba(34, 197, 94, 0.25);
     }
 
     input[type="submit"]:hover {
-      background: #16a34a;
+      filter: brightness(1.05);
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid rgba(15, 23, 42, 0.9);
+      padding: 14px 0 18px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 26px;
+    }
+
+    footer a {
+      color: var(--accent-alt);
     }
   </style>
 </head>
 <body>
-  <div id="demo-content">
-    <!-- Navbar -->
+  <div class="page-shell">
+    <!-- NAVBAR -->
     <nav>
-      <div class="logo">
-        <h4>Anshuman Badal</h4>
-      </div>
-      <ul class="nav-links">
-        <li><a href="#top">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#" id="btnOpenForm">Contact</a></li>
-      </ul>
-      <div class="burger">
-        <div class="line1"></div>
-        <div class="line2"></div>
-        <div class="line3"></div>
+      <div class="nav-inner">
+        <div class="logo-text">ANSHUMAN BADAL</div>
+        <ul class="nav-links">
+          <li><a href="#top">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#" id="btnOpenForm">Contact</a></li>
+        </ul>
+        <div class="burger">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
       </div>
     </nav>
 
-    <!-- Hero / Profile -->
+    <!-- HERO -->
     <header id="top" class="hero">
-      <div class="container">
-        <div class="hero-left">
-          <h1 class="hero-title">Hi, I'm Anshuman 👋</h1>
-          <p class="hero-subtitle">
-            Full Stack Engineer specializing in Java, Spring Boot, React, GraphQL and AWS Cloud.
-          </p>
-          <div class="hero-badges">
-            <span class="badge-pill">Full Stack Engineering</span>
-            <span class="badge-pill">Production Support</span>
-            <span class="badge-pill">AWS & Cloud</span>
-            <span class="badge-pill">Incident / Change / Problem Management</span>
-          </div>
-          <p>
-            I build and support large-scale, production-grade applications with a focus on reliability,
-            performance, and clean architecture. I enjoy debugging complex issues, designing scalable
-            backend systems, and working with modern cloud-native stacks.
-          </p>
-          <div class="hero-cta">
-            <a href="mailto:apcbadal@gmail.com">
-              <button class="btn-primary-custom">Email Me</button>
-            </a>
-            <a href="https://www.linkedin.com/in/apcbadal" target="_blank">
-              <button class="btn-outline-custom">View LinkedIn</button>
-            </a>
-          </div>
-        </div>
+      <div class="container-main">
+        <div class="hero-inner">
+          <div>
+            <h1 class="hero-title">Hi, I’m Anshuman <span>👋</span></h1>
+            <p class="hero-subtitle">
+              Full Stack Engineer specializing in Java, Spring Boot, React, GraphQL and AWS Cloud.
+            </p>
 
-        <div class="hero-right">
-          <div class="profile-image-wrapper">
-            <img src="images/anshu.jpg" alt="Anshuman profile" />
+            <div class="hero-badges-row">
+              <span class="pill-badge">Full Stack Engineering</span>
+              <span class="pill-badge">Production Support</span>
+              <span class="pill-badge">AWS & Cloud</span>
+              <span class="pill-badge pill-badge--soft">Incident / Change / Problem Management</span>
+            </div>
+
+            <p class="hero-text-main">
+              I build and support large-scale, production-grade applications with a focus on reliability,
+              performance, and clear architecture. I enjoy deep debugging, designing scalable backend systems,
+              and working with modern cloud-native stacks.
+            </p>
+
+            <div class="hero-cta-row">
+              <a href="mailto:apcbadal@gmail.com"><button class="btn-primary">Email Me</button></a>
+              <a href="https://www.linkedin.com/in/apcbadal" target="_blank"><button class="btn-outline">View LinkedIn</button></a>
+            </div>
           </div>
-          <div class="hero-location">
-            Gurugram / Noida, India · <a href="tel:+917091177725">+91 7091177725</a>
+
+          <div class="hero-right">
+            <div class="avatar-shell">
+              <img src="images/anshu.jpg" alt="Anshuman profile" />
+            </div>
+            <div class="hero-location">
+              Gurugram / Noida, India ·
+              <a href="tel:+917091177725">+91 7091177725</a>
+            </div>
           </div>
         </div>
       </div>
     </header>
 
-    <!-- About -->
+    <!-- ABOUT -->
     <section id="about">
-      <div class="container">
-        <h2 class="section-title">About</h2>
-        <p class="about-text">
-          I am a results-driven Software Engineer with strong expertise in Java, Spring Boot, React, PostgreSQL,
-          NoSQL and AWS Cloud. I specialize in managing and supporting large-scale production applications
-          where stability, performance, and quick incident resolution are critical.
-        </p>
-        <p class="about-text">
-          My experience includes end-to-end ownership of production systems across Incident, Change and Problem
-          Management, proactive dependency upgrades, and deep collaboration with stakeholders. I work extensively
-          with modern cloud architectures using AWS CDK, Amplify, CloudFormation, AppSync, GraphQL and DynamoDB
-          to deliver scalable, secure and resilient solutions.
-        </p>
+      <div class="container-main section-stack">
+        <div class="section-card">
+          <div class="section-title">About</div>
+          <p class="text-body">
+            I am a results-driven Software Engineer with strong expertise in Java, Spring Boot, React, PostgreSQL, NoSQL
+            and AWS Cloud, specializing in managing and supporting large-scale production applications where stability,
+            performance, and quick incident resolution are critical.
+          </p>
+          <p class="text-body">
+            My experience includes end-to-end ownership of production systems across Incident, Change and Problem
+            Management, proactive dependency upgrades, and deep collaboration with stakeholders. I work extensively with
+            modern cloud architectures using AWS CDK, Amplify, CloudFormation, AppSync, GraphQL and DynamoDB to deliver
+            scalable, secure, and resilient solutions.
+          </p>
+        </div>
       </div>
     </section>
 
-    <!-- Experience -->
+    <!-- EXPERIENCE -->
     <section id="experience">
-      <div class="container">
-        <h2 class="section-title">Experience</h2>
+      <div class="container-main section-stack">
+        <div class="section-card">
+          <div class="section-title">Experience</div>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-header">
+                <div class="role">Application Development Senior Analyst</div>
+                <div class="company">Accenture</div>
+                <div class="meta">September 2024 – Present · Gurugram, India</div>
+              </div>
+              <div class="timeline-body">
+                <ul>
+                  <li>Managing and supporting large-scale production applications with high availability.</li>
+                  <li>Leading Incident, Change and Problem Management with detailed RCA and long-term fixes.</li>
+                  <li>Executing deployments on complex AWS architectures using CDK, CloudFormation, AppSync, GraphQL, DynamoDB.</li>
+                  <li>Collaborating daily with stakeholders on incidents, analysis and development updates.</li>
+                </ul>
+              </div>
+            </div>
 
-        <div class="timeline-item">
-          <div class="timeline-role">Application Development Senior Analyst</div>
-          <div class="timeline-company">Accenture</div>
-          <div class="timeline-meta">September 2024 – Present · Gurugram, India</div>
-          <ul class="timeline-list">
-            <li>Managing and supporting large-scale production applications with high availability.</li>
-            <li>Leading Incident, Change and Problem Management with detailed RCA and long-term fixes.</li>
-            <li>Executing deployments on complex AWS architectures using CDK, CloudFormation, AppSync, GraphQL, DynamoDB.</li>
-            <li>Collaborating daily with stakeholders on incidents, analysis and development updates.</li>
-          </ul>
-        </div>
+            <div class="timeline-item">
+              <div class="timeline-header">
+                <div class="role">Senior Software Developer</div>
+                <div class="company">Velocis Systems Pvt. Ltd.</div>
+                <div class="meta">January 2024 – September 2024 · New Delhi, India</div>
+              </div>
+              <div class="timeline-body">
+                <ul>
+                  <li>Worked with NIC (Govt. of India) on Smart Public Distribution System projects.</li>
+                  <li>Designed and developed APIs for the One Nation One Ration Card scheme.</li>
+                  <li>Handled a large PostgreSQL database (~40 TB) for efficient data storage and retrieval.</li>
+                  <li>Set up GitLab and CI/CD pipelines to streamline deployments across multiple services.</li>
+                </ul>
+              </div>
+            </div>
 
-        <div class="timeline-item">
-          <div class="timeline-role">Senior Software Developer</div>
-          <div class="timeline-company">Velocis Systems Pvt. Ltd.</div>
-          <div class="timeline-meta">January 2024 – September 2024 · New Delhi, India</div>
-          <ul class="timeline-list">
-            <li>Worked with NIC (Govt. of India) on Smart Public Distribution System projects.</li>
-            <li>Designed and developed APIs for One Nation One Ration Card Scheme.</li>
-            <li>Handled a large PostgreSQL database (~40 TB) for efficient data access.</li>
-            <li>Set up GitLab and CI/CD pipelines to streamline deployments.</li>
-          </ul>
-        </div>
+            <div class="timeline-item">
+              <div class="timeline-header">
+                <div class="role">Software Engineer</div>
+                <div class="company">Blue Berry e-Services Pvt. Ltd.</div>
+                <div class="meta">October 2021 – January 2024 · Noida, India</div>
+              </div>
+              <div class="timeline-body">
+                <ul>
+                  <li>Integrated Truecaller authentication, reducing phone verification cost by ~80%.</li>
+                  <li>Implemented 1-tap instant verification, eliminating OTP SMS and reducing drop-offs.</li>
+                  <li>Built CI/CD pipelines using GitHub Actions, Docker and Azure (around 40% faster release cycles).</li>
+                  <li>Improved performance using Redis and JPA (up to 50% faster load times).</li>
+                  <li>Developed features in React Native for Android and iOS.</li>
+                </ul>
+              </div>
+            </div>
 
-        <div class="timeline-item">
-          <div class="timeline-role">Software Engineer</div>
-          <div class="timeline-company">Blue Berry e-Services Pvt. Ltd.</div>
-          <div class="timeline-meta">October 2021 – January 2024 · Noida, India</div>
-          <ul class="timeline-list">
-            <li>Integrated Truecaller authentication, reducing verification cost by ~80%.</li>
-            <li>Implemented 1-tap instant verification, removing OTP SMS and reducing drop-offs.</li>
-            <li>Built CI/CD pipelines using GitHub Actions, Docker and Azure (40% faster releases).</li>
-            <li>Improved performance with Redis and JPA (up to 50% faster load times).</li>
-            <li>Developed features using React Native for Android and iOS.</li>
-          </ul>
-        </div>
+            <div class="timeline-item">
+              <div class="timeline-header">
+                <div class="role">Software Engineer Intern</div>
+                <div class="company">Blue Berry e-Services Pvt. Ltd.</div>
+                <div class="meta">July 2021 – September 2021 · Noida, India</div>
+              </div>
+              <div class="timeline-body">
+                <ul>
+                  <li>Built authentication UI, profile screens and navigation using React Native.</li>
+                  <li>Integrated in-app update support and enhanced overall app UX.</li>
+                </ul>
+              </div>
+            </div>
 
-        <div class="timeline-item">
-          <div class="timeline-role">Software Engineer Intern</div>
-          <div class="timeline-company">Blue Berry e-Services Pvt. Ltd.</div>
-          <div class="timeline-meta">July 2021 – September 2021 · Noida, India</div>
-          <ul class="timeline-list">
-            <li>Built Authentication UI, Profile screens and navigation using React Native.</li>
-            <li>Integrated in-app update support and enhanced overall app UX.</li>
-          </ul>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-role">Frontend Developer Intern</div>
-          <div class="timeline-company">Prolincur Technologies</div>
-          <div class="timeline-meta">June 2021 – June 2021</div>
-          <ul class="timeline-list">
-            <li>Worked on React and React-Three.js to build interactive frontend components.</li>
-          </ul>
+            <div class="timeline-item">
+              <div class="timeline-header">
+                <div class="role">Frontend Developer Intern</div>
+                <div class="company">Prolincur Technologies</div>
+                <div class="meta">June 2021 – June 2021</div>
+              </div>
+              <div class="timeline-body">
+                <ul>
+                  <li>Worked on React and React-Three.js to build interactive frontend components.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Education & Projects -->
+    <!-- EDUCATION + PROJECTS -->
     <section id="projects">
-      <div class="container">
-        <h2 class="section-title">Education</h2>
-        <div class="timeline-item">
-          <div class="timeline-role">B.Tech, Computer Science & Engineering</div>
-          <div class="timeline-company">Katihar Engineering College, Katihar</div>
-          <div class="timeline-meta">September 2016 – December 2020 · CGPA: 7.4</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-role">XII (BSEB Patna)</div>
-          <div class="timeline-company">+2 Project Girls High School, Bhairoganj</div>
-          <div class="timeline-meta">Year: 2016 · Percentage: 54%</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-role">X (BSEB Patna)</div>
-          <div class="timeline-company">+2 Project Girls High School, Bhairoganj</div>
-          <div class="timeline-meta">Year: 2014 · Percentage: 70%</div>
+      <div class="container-main section-stack">
+        <div class="section-card">
+          <div class="section-title">Education</div>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-header">
+                <div class="role">B.Tech, Computer Science & Engineering</div>
+                <div class="company">Katihar Engineering College, Katihar</div>
+                <div class="meta">September 2016 – December 2020 · CGPA: 7.4</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-header">
+                <div class="role">XII (BSEB Patna)</div>
+                <div class="company">+2 Project Girls High School, Bhairoganj</div>
+                <div class="meta">Year: 2016 · Percentage: 54%</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-header">
+                <div class="role">X (BSEB Patna)</div>
+                <div class="company">+2 Project Girls High School, Bhairoganj</div>
+                <div class="meta">Year: 2014 · Percentage: 70%</div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <h2 class="section-title" style="margin-top: 2rem;">Projects</h2>
+        <div class="section-card" style="margin-top: 22px;">
+          <div class="section-title">Projects</div>
 
-        <div class="project-item">
-          <div class="project-title">Online Attendance App</div>
-          <div class="project-meta">React Native · Firebase · 25 Dec 2019 – 15 Feb 2020</div>
-          <p>
-            Built an Online Attendance App using React Native and Firebase that minimized paperwork for student
-            attendance and digitized the entire process into a mobile app environment.
-          </p>
-        </div>
+          <div class="project-item">
+            <div class="project-title">Online Attendance App</div>
+            <div class="project-meta">React Native · Firebase · 25 Dec 2019 – 15 Feb 2020</div>
+            <p class="text-body">
+              Built an Online Attendance App using React Native and Firebase that minimized paperwork for student
+              attendance and digitized the entire attendance process into a mobile app environment.
+            </p>
+          </div>
 
-        <div class="project-item">
-          <div class="project-title">College Website with Inventory Management System</div>
-          <div class="project-meta">HTML, CSS, JavaScript, Java, MySQL · 15 Nov 2019 – 3 Jan 2020</div>
-          <p>
-            Contributed as part of the web team to develop the college website with an integrated inventory management system.
-            The system used HTML/CSS/JS on the frontend and Java + MySQL on the backend.
-            <br />
-            Visit:
-            <a href="http://keck.ac.in" target="_blank" rel="noopener noreferrer">
-              Katihar Engineering College, Katihar
-            </a>
-          </p>
+          <div class="project-item">
+            <div class="project-title">College Website with Inventory Management System</div>
+            <div class="project-meta">HTML, CSS, JavaScript, Java, MySQL · 15 Nov 2019 – 3 Jan 2020</div>
+            <p class="text-body">
+              Contributed as part of the web team to develop the college website with an integrated inventory management
+              system. The system used HTML / CSS / JavaScript on the frontend and Java + MySQL on the backend.
+              <br />
+              Visit:
+              <a href="http://keck.ac.in" target="_blank" rel="noopener noreferrer">Katihar Engineering College, Katihar</a>
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Skills -->
+    <!-- SKILLS & EXTRAS -->
     <section id="skills">
-      <div class="container">
-        <h2 class="section-title">Skills & Tools</h2>
-        <div class="skills-grid">
-          <div class="skill-chip">Java</div>
-          <div class="skill-chip">Spring Boot</div>
-          <div class="skill-chip">REST APIs</div>
-          <div class="skill-chip">React</div>
-          <div class="skill-chip">React Native</div>
-          <div class="skill-chip">JavaScript</div>
-          <div class="skill-chip">PostgreSQL</div>
-          <div class="skill-chip">MySQL</div>
-          <div class="skill-chip">NoSQL / DynamoDB</div>
-          <div class="skill-chip">AWS CDK</div>
-          <div class="skill-chip">AWS Amplify</div>
-          <div class="skill-chip">AWS CloudFormation</div>
-          <div class="skill-chip">AWS AppSync</div>
-          <div class="skill-chip">GraphQL</div>
-          <div class="skill-chip">Git / GitHub / GitLab</div>
-          <div class="skill-chip">CI/CD · Jenkins, GitHub Actions</div>
-          <div class="skill-chip">Docker</div>
-          <div class="skill-chip">Windows / Linux</div>
-        </div>
+      <div class="container-main section-stack">
+        <div class="section-card">
+          <div class="section-title">Skills & Tools</div>
+          <div class="skills-grid">
+            <div class="skill-chip">Java</div>
+            <div class="skill-chip">Spring Boot</div>
+            <div class="skill-chip">REST APIs</div>
+            <div class="skill-chip">React</div>
+            <div class="skill-chip">React Native</div>
+            <div class="skill-chip">JavaScript</div>
+            <div class="skill-chip">PostgreSQL</div>
+            <div class="skill-chip">MySQL</div>
+            <div class="skill-chip">NoSQL / DynamoDB</div>
+            <div class="skill-chip">AWS CDK</div>
+            <div class="skill-chip">AWS Amplify</div>
+            <div class="skill-chip">AWS CloudFormation</div>
+            <div class="skill-chip">AWS AppSync</div>
+            <div class="skill-chip">GraphQL</div>
+            <div class="skill-chip">Git / GitHub / GitLab</div>
+            <div class="skill-chip">CI/CD – Jenkins, GitHub Actions</div>
+            <div class="skill-chip">Docker</div>
+            <div class="skill-chip">Windows / Linux</div>
+          </div>
 
-        <div class="section-wrapper clearfix" style="margin-top: 1.5rem;">
-          <h3 class="section-title" style="font-size: 1.1rem;">Achievements</h3>
-          <p>Won the Ethical Hacking Competition at GCE, Gaya.</p>
-        </div>
-
-        <div class="section-wrapper clearfix" style="margin-top: 1rem;">
-          <h3 class="section-title" style="font-size: 1.1rem;">Hobbies</h3>
-          <p>Playing Carrom.</p>
+          <div class="two-column-small">
+            <div>
+              <div class="sub-title-inline">Achievements</div>
+              <p class="text-body">Won the Ethical Hacking Competition at GCE, Gaya.</p>
+            </div>
+            <div>
+              <div class="sub-title-inline">Hobbies</div>
+              <p class="text-body">Playing Carrom.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Contact Popup -->
+    <!-- CONTACT POPUP -->
     <div class="form-popup-bg">
       <div class="form-container">
         <button id="btnCloseForm" class="close-button">✕</button>
@@ -661,6 +837,7 @@
       </div>
     </div>
 
+    <!-- FOOTER -->
     <footer>
       © <span id="year"></span> Anshuman Badal · Built with ❤️ using JavaScript & Firebase ·
       <a href="https://github.com/apcbadal" target="_blank">GitHub</a> ·
@@ -669,32 +846,18 @@
     </footer>
   </div>
 
-  <!-- Scripts -->
+  <!-- JS: nav + contact -->
   <script>
-    // Set current year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Mobile nav
     const navSlide = () => {
       const burger = document.querySelector(".burger");
       const nav = document.querySelector(".nav-links");
-      const navLinks = document.querySelectorAll(".nav-links li");
 
       burger.addEventListener("click", () => {
         nav.classList.toggle("nav-active");
-
-        navLinks.forEach((link, index) => {
-          if (link.style.animation) {
-            link.style.animation = "";
-          } else {
-            link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.5}s`;
-          }
-        });
-
-        burger.classList.toggle("toggle");
       });
     };
-
     navSlide();
 
     function closeForm() {
@@ -722,22 +885,10 @@
       const phone = document.getElementById("contactPhone").value.trim();
       const query = document.getElementById("contactQuery").value.trim();
 
-      if (!name) {
-        alert("Name can't be blank!");
-        return;
-      }
-      if (!email) {
-        alert("Email can't be blank!");
-        return;
-      }
-      if (!phone) {
-        alert("Phone number can't be blank!");
-        return;
-      }
-      if (!query) {
-        alert("Message can't be blank!");
-        return;
-      }
+      if (!name) return alert("Name can't be blank!");
+      if (!email) return alert("Email can't be blank!");
+      if (!phone) return alert("Phone number can't be blank!");
+      if (!query) return alert("Message can't be blank!");
 
       contact(name, email, phone, query);
     }
@@ -763,11 +914,5 @@
         });
     }
   </script>
-
-  <script>
-    window.jQuery ||
-      document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\\/script>');
-  </script>
-  <script src="js/main.js"></script>
 </body>
 </html>
